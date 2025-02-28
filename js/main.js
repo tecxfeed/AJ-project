@@ -181,4 +181,39 @@
 })(jQuery);
 
 ScrollReveal().reveal('.scroll_reveal',{delay:100, easing:"ease-out", interval:150, scale:1});
-ScrollReveal().reveal('.scroll_reveal_300',{delay:300, easing:"ease-in", interval:300, scale:1});
+// ScrollReveal().reveal('.
+// ',{delay:300, easing:"ease-out", interval:300, scale:1});
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById('emailForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const btn = document.getElementById('button');
+    btn.value = 'Sending...';
+
+    const serviceID = 'service_38zj6zc';
+    const templateID = 'template_cu568ss';
+
+    const params = {
+      name: document.getElementById("name").value,
+      number: document.getElementById("number").value,
+      email: document.getElementById("email").value,
+      message: document.getElementById("message").value
+    };
+
+    emailjs.send(serviceID, templateID, params)
+      .then(() => {
+        btn.value = 'Send Message';
+        console.log("success");
+        console.log("success");
+
+        
+        document.getElementById('response').innerText = "✅ Email sent successfully!";
+        console.log(params);
+      })
+      .catch((err) => {
+        btn.value = 'Send Message';
+        console.log("failed");
+        document.getElementById('response').innerText = "❌ Failed to send email: " + JSON.stringify(err);
+      });
+  });
+});
