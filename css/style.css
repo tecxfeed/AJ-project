@@ -1623,5 +1623,11 @@ textarea.form-control {
   }
 }
 .bfooter{
-  background-color:#A27B5C;
+  background-color: #A27B5C;
+}
+.inphoto{
+  height: 512px;
+  width: 100%;
+  border-radius: 0%;
+  background-color:rgb(0, 0, 0);
 }
